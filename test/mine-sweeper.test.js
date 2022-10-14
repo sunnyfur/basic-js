@@ -1,13 +1,13 @@
-const { assert } = require('chai');
-const { testOptional } = require('../extensions/index.js');
-const { minesweeper } = require('../src/mine-sweeper.js');
+const { assert } = require("chai");
+const { testOptional } = require("../extensions/index.js");
+const { minesweeper } = require("../src/mine-sweeper.js");
 
 it.optional = testOptional;
 
 Object.freeze(assert);
 
-describe('Minesweeper', () => {
-  it.optional('should return minesweeper game setup', () => {
+describe("Minesweeper", () => {
+  it.optional("should return minesweeper game setup", () => {
     assert.deepEqual(
       minesweeper([
         [true, false, false],
@@ -18,7 +18,7 @@ describe('Minesweeper', () => {
         [1, 2, 1],
         [2, 1, 1],
         [1, 1, 1],
-      ],
+      ]
     );
 
     assert.deepEqual(
@@ -29,7 +29,7 @@ describe('Minesweeper', () => {
       [
         [0, 0, 0],
         [0, 0, 0],
-      ],
+      ]
     );
   });
 });
