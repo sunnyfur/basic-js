@@ -16,8 +16,12 @@ class DepthCalculator {
   calculateDepth(arr) {
     if (typeof arr != "object") return 0;
     if (arr.length == 0) return 1;
-
-    return arr.reduce((sum, elem) => sum + this.calculateDepth(elem), 1);
+    if (arr.length == 1)
+      return arr.reduce((sum, elem) => sum + this.calculateDepth(elem), 1);
+    return Math.max.call(
+      null,
+      arr.map((elem) => this.calculateDepth(elem))
+    );
   }
 }
 
