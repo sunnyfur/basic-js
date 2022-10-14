@@ -15,8 +15,15 @@ function getSeason(/* date */) {
   if (arguments.length == 0) return "Unable to determine the time of year!";
   if (arguments.length > 1) throw new Error("Invalid date!");
   const date = arguments[0];
-  if (typeof date != "object") throw new Error("Invalid date!");
-  if (!arguments[0] instanceof Date) throw new Error("Invalid date!");
+
+  if (typeof date != "object" || !date instanceof Date)
+    throw new Error("Invalid date!");
+  try {
+    +date;
+  } catch {
+    throw new Error("Invalid date!");
+  }
+
   try {
     switch (date.getMonth()) {
       case 0:
