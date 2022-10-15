@@ -22,6 +22,10 @@ const { NotImplementedError } = require("../extensions/index.js");
 class VigenereCipheringMachine {
   alp = "abcdefghijklmnopqrstuvwxyz";
 
+  constructor(direct = true) {
+    this.direct = direct;
+  }
+
   encrypt() {
     if (arguments.length != 2 || !arguments[0] || !arguments[1])
       throw new Error("Incorrect arguments!");
@@ -43,7 +47,9 @@ class VigenereCipheringMachine {
                 this.alp.length
             ]);
     }
-    return res.toUpperCase();
+    return this.direct
+      ? res.toUpperCase()
+      : res.split("").reverse().join("").toUpperCase();
   }
   decrypt() {
     if (arguments.length != 2 || !arguments[0] || !arguments[1])
@@ -72,7 +78,9 @@ class VigenereCipheringMachine {
           ];
       }
     }
-    return res.toUpperCase();
+    return this.direct
+      ? res.toUpperCase()
+      : res.split("").reverse().join("").toUpperCase();
   }
 }
 
